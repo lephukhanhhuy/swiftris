@@ -106,9 +106,12 @@ class Shape: Hashable, Printable {
     
     final func rotateBlocks(orientation: Orientation) {
         if let blockRowColumnTranslation:Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] {
-            for (idx, (columnDiff:Int, rowDiff:Int)) in enumerate(blockRowColumnTranslation) {
-                blocks[idx].column = column + columnDiff
-                blocks[idx].row = row + rowDiff
+            for var idx = 0; idx < blockRowColumnTranslation.count; idx++
+            {
+//            for (idx, (columnDiff:Int, rowDiff:Int)) in enumerate(blockRowColumnTranslation) {
+                let tuple = blockRowColumnTranslation[idx]
+                blocks[idx].column = column + tuple.columnDiff
+                blocks[idx].row = row + tuple.rowDiff
             }
         }
     }
